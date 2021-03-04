@@ -1,5 +1,5 @@
-# OIB validation [ENG]
-Methods in various programming languages to validate Croatian identification number called OIB. More info on www.oib.hr.
+# OIB validation
+[ENG] Methods in various programming languages to validate Croatian identification number called OIB. More info on www.oib.hr.
 
 # Provjera valjanosti OIB-a
 Metode u različitim programskim jezicima za provjeru hrvatskog identifikacijskog broja zvanog OIB. 
