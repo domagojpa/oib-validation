@@ -14,7 +14,8 @@ U sve više projekata susrećemo se s potrebom za unosom ovog broja, a kako nism
 
 OIB mora imati 11 znamenaka s time da je zadnja znamenka kontrolna. OIB se provjerava na temelju te zadnje znamenke. S obzirom da se OIB dodjeljuje slučajnim odabirom prvih deset znamenaka, moguće je da sintaksa broja bude ispravna, no da broj nije dodjeljen niti jednoj pravnoj niti fizičkoj osobi.
 
-Ukoliko netko ima volje napisati funkcije u drugim jezicima, slobodno dodajte.
+Ukoliko netko ima volje napisati funkcije u drugim jezicima, slobodno napravite pull request ili mi pošaljite na mejl.
+Ako radite pull request, molim da kreirate direktorij s nazivom jezika i u njemu stavite datoteku koja se zove "oib-validator.ext" gdje je ".ext" ekstenzija tipična za taj programski jezik (ili, ako je nema, koristite ".txt").
 
 Sve funkcije, servisi i objašnjenja su dana u najboljoj namjeri, no ne odgovaramo za eventualne probleme proizašle iz njihovog korištenja.
 
