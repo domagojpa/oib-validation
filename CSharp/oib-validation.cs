@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-/// <summary>
-/// Summary description for oib
-/// </summary>
-public class oib
+public class Validators
 {
-	public static bool CheckOIB(string oib)
+	public static bool IsValidOIB(string oib)
 	{
 		if (string.IsNullOrEmpty(oib) || !Regex.IsMatch(oib, "^[0-9]{11}$")) 
 			return false;
