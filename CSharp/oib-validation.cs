@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 /// <summary>
 /// Summary description for oib
@@ -7,7 +8,9 @@ public class oib
 {
 	public static bool CheckOIB(string oib)
 	{
-		if (string.IsNullOrEmpty(oib) || oib.Length != 11) 
+		if (string.IsNullOrEmpty(oib) 
+			|| oib.Length != 11
+			|| !Regex.IsMatch(oib, "^[0-9]*$")) 
 			return false;
 
 		if (!long.TryParse(oib, out _)) 
