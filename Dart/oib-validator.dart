@@ -1,31 +1,23 @@
  
-  bool checkOIB(String oib) {
-    if (oib.length != 11) return false;
-
-    int a = 10;
+  bool oibIsValid(String input) {
+    if (input == null || input.length != 11 || int.tryParse(input) == null) return false;
+    
+    int isoVar = 10;
+   
     for (int i = 0; i < 10; i++) {
-      int broj;
-      try {
-        broj = int.tryParse(oib.substring(i, i + 1)) ?? 0;
-      } catch (e) {
-        return false;
-      }
+      int currentElement;
+     
+      currentElement = int.parse(input.substring(i, i + 1));
 
-      a += broj;
-      a = a % 10;
-      if (a == 0) a = 10;
-      a *= 2;
-      a = a % 11;
+      isoVar += currentElement;
+      isoVar = a % 10;
+      if (isoVar == 0) isoVar = 10;
+      isoVar *= 2;
+      isoVar = isoVar % 11;
     }
-    int kontrolni = 11 - a;
-    if (kontrolni == 10) kontrolni = 0;
-
-    int broj;
-
-    try {
-      broj = int.tryParse(oib.substring(10)) ?? 0;
-    } catch (e) {
-      return false;
-    }
-    return kontrolni == broj;
-  }
+   
+    int lastDigit = 11 - isoVar;
+    if (lastDigit == 10) lastDigit = 0;
+    
+    return lastDigit == int.parse(input.substring(10);
+}
