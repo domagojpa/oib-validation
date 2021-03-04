@@ -1,0 +1,82 @@
+
+********************
+FUNCTION OibProvjera (cOib)
+********************
+//  jedanaesti znak OIB-a je kontrolni znak
+//  dobiven izracunom iz prethodnih 10 znamenki,
+//  po medjunarodnoj normi ISO 7064 (MOD 11, 10)
+//
+//  % (modulus operator) slici dBase funkciji MOD(), ali
+//  nije identican (npr. nije dozvoljeno dijeljenje s 0)
+//  - navedeni operator '%' vraca broj koji predstavlja
+//  ostatak kada se <nBroj1> podijeli s <nBroj2>
+//
+//  Nacin uporabe:
+//  IF .NOT. OibProvjera(<nekiOIB>)
+//    <nekakva_poruka>
+//    <redovito_i_prekid>
+//  ENDIF
+
+LOCAL lProvjera, iX, nBroj, nKontrolni
+
+lProvjera := .F.
+
+WHILE .T.
+
+  IF .NOT. LEN(STRTRAN(cOib, " ", "")) == 11     // OIB ima jedanaest znakova
+    EXIT
+  ENDIF
+
+  IF .NOT. SamoBrojevi(cOib)                     // dozvoljeni su samo brojevi
+    EXIT
+  ENDIF
+
+  IF LEFT(cOib,10) == REPLICATE(LEFT(cOib,1),10) // ne moze 10 istih brojeva
+    EXIT
+  ENDIF
+
+  nKontrolni := 0
+  nBroj      := 10
+
+  FOR iX := 1 TO 10                              // STEP 1
+    nBroj += VAL(SUBSTR(cOib, iX, 1))            // nBroj := nBroj + VAL(SUBSTR(cOib, iX, 1))
+    nBroj %= 10                                  // nBroj := nBroj % 10
+    IF nBroj == 0                                // djelitelj ne moze biti 0
+      nBroj := 10
+    ENDIF
+    nBroj *= 2                                   // nBroj := nBroj * 2
+    nBroj %= 11                                  // nBroj := nBroj % 11
+  NEXT                                           // iX
+
+  nKontrolni := 11 - nBroj
+  IF nKontrolni == 10                            // ne mogu dvije znamenke
+    nKontrolni := 0
+  ENDIF
+
+  IF nKontrolni == VAL(SUBSTR(cOib, 11, 1))
+    lProvjera := .T.
+  ENDIF
+
+  EXIT
+
+ENDDO
+
+RETURN lProvjera
+
+
+
+********************
+FUNCTION SamoBrojevi (cString)
+********************
+LOCAL lProvjera, iX
+lProvjera := .T.
+
+FOR iX := 1 TO LEN(cString)                      // STEP 1
+  IF .NOT. SUBSTR(cString,iX,1) $ "0123456789"
+    lProvjera := .F.
+    EXIT
+  ENDIF
+NEXT                                             // iX
+
+RETURN lProvjera
+
