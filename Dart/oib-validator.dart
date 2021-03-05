@@ -10,7 +10,7 @@
       currentElement = int.parse(input.substring(i, i + 1));
 
       isoVar += currentElement;
-      isoVar = a % 10;
+      isoVar = isoVar % 10;
       if (isoVar == 0) isoVar = 10;
       isoVar *= 2;
       isoVar = isoVar % 11;
