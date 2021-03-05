@@ -8,6 +8,7 @@ public class Validators
 		if (string.IsNullOrEmpty(oib) || !Regex.IsMatch(oib, "^[0-9]{11}$")) 
 			return false;
 
+        
         var oibSpan = oib.AsSpan();
 
 		var a = 10;
