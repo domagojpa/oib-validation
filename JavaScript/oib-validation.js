@@ -1,20 +1,31 @@
-﻿function CheckOIB(oib) {
-    oib = oib.toString();
-    if (oib.length != 11) return false;
+﻿function isOibValid(input) {
+    const oib = input.toString();
 
-    var b = parseInt(oib, 10);
-    if (isNaN(b)) return false;
-
-    var a = 10;
-    for (var i = 0; i < 10; i++) {
-        a = a + parseInt(oib.substr(i, 1), 10);
-        a = a % 10;
-        if (a == 0) a = 10;
-        a *= 2;
-        a = a % 11;
+    if (oib.match(/\d{11}/) === null) {
+        return false;
     }
-    var kontrolni = 11 - a;
-    if (kontrolni == 10) kontrolni = 0;
 
-    return kontrolni == parseInt(oib.substr(10, 1));
+    let calculated = 10;
+
+    for (const digit of oib.substring(0, 10)) {
+        calculated += parseInt(digit);
+
+        calculated %= 10;
+
+        if (calculated === 0) {
+            calculated = 10;
+        }
+
+        calculated *= 2;
+
+        calculated %= 11;
+    }
+
+    const check = 11 - calculated;
+    
+    if (check === 10) {
+        check = 0;
+    }
+
+    return check === parseInt(oib[10]);
 }

@@ -1,0 +1,13 @@
+10 INPUT "What's your OIB:"; OIB
+20 IF LEN(OIB) <> 11 THEN GOTO 10
+30 LET A = 10
+40 FOR I = 0 TO 10
+50 A = A + VAL(MID(OIB, I, 1))
+60 A = A % 10
+70 IF A = 0 THEN A = 10
+80 A = A * 2
+90 A = A % 11
+100 NEXT I
+110 LET K = 11 - A
+120 IF K = 10 THEN K = 0
+130 IF K = VAL(MID(OIB, 10, 1)) THEN PRINT "OIB is valid!" ELSE PRINT "OIB is not valid!"
