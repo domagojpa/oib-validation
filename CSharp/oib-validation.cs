@@ -8,10 +8,8 @@ public class Validators
 		if (string.IsNullOrEmpty(oib) || !Regex.IsMatch(oib, "^[0-9]{11}$")) 
 			return false;
 
-        
         var oibSpan = oib.AsSpan();
-
-		var a = 10;
+    	var a = 10;
 		for (var i = 0; i < 10; i++)
 		{
 			a += int.Parse(oibSpan.Slice(i, 1));
