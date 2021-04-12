@@ -9,13 +9,13 @@ function CheckOIB($oib) {
 
 	for ($i = 0; $i < 10; $i++) {
 
-		$a = $a + intval(substr($oib, $i, 1), 10);
-		$a = $a % 10;
+		$a += (int)$oib[$i];
+		$a %= 10;
 
 		if ( $a == 0 ) { $a = 10; }
 
 		$a *= 2;
-		$a = $a % 11;
+		$a %= 11;
 
 	}
 
