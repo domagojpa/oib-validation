@@ -10,16 +10,16 @@ def check_oib(oib: Union[str, int]) -> bool:
     if len(oib) != OIB_LEN or not oib.isdigit():
         return False
 
-    a = 0
-    for c in oib[:-1]:
-        a += int(c)
-        a = a % 10
-        if a == 0:
-            a = 10
-        a *= 2
-        a = a % 11
+    medu_ostatak = 0
+    for digit in oib[:-1]:
+        medu_ostatak += int(digit)
+        medu_ostatak %= 10
+        if medu_ostatak == 0:
+            medu_ostatak = 10
+        medu_ostatak *= 2
+        medu_ostatak %= 11
 
-    kontrolni = OIB_LEN - a
+    kontrolni = OIB_LEN - medu_ostatak
     if kontrolni == 10:
         kontrolni = 0
 
