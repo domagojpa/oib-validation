@@ -5,7 +5,7 @@ def check_oib(oib: Union[str, int]) -> bool:
     """Check if OIB is valid and return True if it is."""
     OIB_LEN = 11
     if isinstance(oib, int):
-        oib = str(oib).zfill(OIB_LEN)
+        oib = str(oib)
 
     if len(oib) != OIB_LEN or not oib.isdigit():
         return False
